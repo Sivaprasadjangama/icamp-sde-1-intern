@@ -7,6 +7,7 @@ import { resolveConfig } from './lib/config.js';
 import { register as registerAdd } from './commands/add.js';
 import { register as registerRemove } from './commands/remove.js';
 import { register as registerList } from './commands/list.js';
+import { register as registerRun } from './commands/run.js';
 
 function formatSourceLabel(source) {
   switch (source) {
@@ -66,6 +67,7 @@ program
 registerAdd(program);
 registerRemove(program);
 registerList(program);
+registerRun(program);
 
 program.parse(process.argv);
 
