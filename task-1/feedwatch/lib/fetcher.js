@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { createLogger } from './logger.js';
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -13,13 +14,6 @@ function isRetryable(err) {
   }
   // Axios uses err.code for network-level problems.
   return !!(err && (err.code || err.isAxiosError));
-}
-
-function debugLog(config, msg) {
-  if (config && String(config.logLevel).toLowerCase() === 'debug') {
-    // eslint-disable-next-line no-console
-    console.debug(msg);
-  }
 }
 
 export async function withRetry(fn, maxRetries, isRetryableFn) {
@@ -46,6 +40,7 @@ export async function withRetry(fn, maxRetries, isRetryableFn) {
 }
 
 async function fetchOne({ name, url }, config) {
+  const logger = createLogger(config.logLevel);
   return withRetry(
     async () => {
       const res = await axios.get(url, {
@@ -64,7 +59,7 @@ async function fetchOne({ name, url }, config) {
     config.retries,
     (err) => {
       const ok = isRetryable(err);
-      if (ok) debugLog(config, `DEBUG retrying feed "${name}"`);
+      if (ok) logger.debug(`DEBUG retrying feed "${name}"`);
       return ok;
     }
   ).then(
