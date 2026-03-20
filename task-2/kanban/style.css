@@ -1,0 +1,41 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 16px;
+}
+
+.top-bar {
+  margin-bottom: 12px;
+}
+
+#search {
+  width: 100%;
+  max-width: 520px;
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+#board {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.column {
+  background: #fafafa;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 10px;
+  width: 260px;
+}
+
+.column-header h2 {
+  font-size: 16px;
+  margin: 0 0 8px 0;
+}
+
+.empty-placeholder {
+  color: #888;
+  padding: 8px 0;
+}
+
