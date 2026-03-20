@@ -8,6 +8,7 @@ import { register as registerAdd } from './commands/add.js';
 import { register as registerRemove } from './commands/remove.js';
 import { register as registerList } from './commands/list.js';
 import { register as registerRun } from './commands/run.js';
+import { register as registerRead } from './commands/read.js';
 
 function formatSourceLabel(source) {
   switch (source) {
@@ -68,6 +69,7 @@ registerAdd(program);
 registerRemove(program);
 registerList(program);
 registerRun(program);
+registerRead(program);
 
 program.parse(process.argv);
 
