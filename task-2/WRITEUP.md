@@ -1,7 +1,5 @@
 ## Architecture / design decisions
 
-![Kanban board sample UI](docs/screenshot-output.png)
-
 The Kanban app is split into small ES Modules under `task-2/kanban/`:
 
 `state.js`
